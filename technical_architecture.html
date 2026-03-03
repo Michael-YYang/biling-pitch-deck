@@ -1,0 +1,332 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+  <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;600;700&family=Inter:wght@300;400;500&display=swap" rel="stylesheet">
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    .slide-container {
+      width: 1280px;
+      min-height: 720px;
+      background: #0d1117;
+      font-family: 'Inter', sans-serif;
+      display: flex;
+      flex-direction: column;
+    }
+    .bg-grid {
+      position: absolute;
+      inset: 0;
+      background-image:
+        linear-gradient(rgba(0,212,255,0.03) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(0,212,255,0.03) 1px, transparent 1px);
+      background-size: 60px 60px;
+      pointer-events: none;
+    }
+    .header { text-align: center; padding-top: 26px; }
+    .section-tag { font-size: 11px; font-weight: 500; letter-spacing: 0.18em; color: #00d4ff; text-transform: uppercase; margin-bottom: 6px; }
+    .page-title { font-family: 'Space Grotesk', sans-serif; font-size: 28px; font-weight: 700; color: #ffffff; }
+    .arch-area {
+      display: flex;
+      flex-direction: column;
+      gap: 0;
+      padding: 16px 40px 0;
+      flex: 1;
+    }
+    .layer-row {
+      display: flex;
+      align-items: stretch;
+      gap: 10px;
+      flex: 1;
+    }
+    .layer-label {
+      width: 110px;
+      flex-shrink: 0;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      gap: 4px;
+    }
+    .layer-num {
+      font-size: 10px;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      font-weight: 500;
+    }
+    .layer-name {
+      font-family: 'Space Grotesk', sans-serif;
+      font-size: 13px;
+      font-weight: 700;
+      text-align: center;
+      line-height: 1.3;
+    }
+    .layer-items {
+      flex: 1;
+      display: flex;
+      gap: 8px;
+      align-items: stretch;
+    }
+    .item-card {
+      flex: 1;
+      background: #161b22;
+      border: 1px solid rgba(255,255,255,0.06);
+      padding: 10px 14px;
+      display: flex;
+      flex-direction: column;
+      gap: 4px;
+    }
+    .item-title {
+      font-family: 'Space Grotesk', sans-serif;
+      font-size: 13px;
+      font-weight: 600;
+      color: #ffffff;
+    }
+    .item-desc {
+      font-size: 11px;
+      color: #8b949e;
+      line-height: 1.45;
+    }
+    .item-tag {
+      display: inline-block;
+      font-size: 10px;
+      padding: 1px 6px;
+      letter-spacing: 0.06em;
+      margin-top: auto;
+      width: fit-content;
+    }
+    /* Layer 1: 数据层 - cyan */
+    .l1 .layer-num { color: #00d4ff; }
+    .l1 .layer-name { color: #00d4ff; }
+    .l1 .item-card { border-color: rgba(0,212,255,0.15); }
+    .l1 .item-tag { background: rgba(0,212,255,0.1); color: #00d4ff; border: 1px solid rgba(0,212,255,0.2); }
+    /* Layer 2: AI引擎层 - purple */
+    .l2 .layer-num { color: #a78bfa; }
+    .l2 .layer-name { color: #a78bfa; }
+    .l2 .item-card { border-color: rgba(124,58,237,0.2); }
+    .l2 .item-tag { background: rgba(124,58,237,0.12); color: #a78bfa; border: 1px solid rgba(124,58,237,0.25); }
+    /* Layer 3: 业务逻辑层 - teal */
+    .l3 .layer-num { color: #06b6d4; }
+    .l3 .layer-name { color: #06b6d4; }
+    .l3 .item-card { border-color: rgba(6,182,212,0.15); }
+    .l3 .item-tag { background: rgba(6,182,212,0.1); color: #06b6d4; border: 1px solid rgba(6,182,212,0.2); }
+    /* Layer 4: 用户界面层 - green */
+    .l4 .layer-num { color: #22c55e; }
+    .l4 .layer-name { color: #22c55e; }
+    .l4 .item-card { border-color: rgba(34,197,94,0.15); }
+    .l4 .item-tag { background: rgba(34,197,94,0.1); color: #22c55e; border: 1px solid rgba(34,197,94,0.2); }
+    .arrow-row {
+      display: flex;
+      align-items: center;
+      padding-left: 120px;
+      height: 14px;
+    }
+    .arrow-line {
+      flex: 1;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 40px;
+    }
+    .arrow-item {
+      font-size: 10px;
+      color: rgba(255,255,255,0.2);
+      letter-spacing: 0.1em;
+    }
+    .footer-bar {
+      margin: 10px 40px 0;
+      border-top: 1px solid rgba(0,212,255,0.3);
+      padding-top: 10px;
+      padding-bottom: 14px;
+      display: flex;
+      gap: 24px;
+      align-items: flex-start;
+    }
+    .insight-text { font-size: 12px; color: rgba(255,255,255,0.7); line-height: 1.6; flex: 1; }
+    .insight-text strong { color: #ffffff; }
+    .tech-stack {
+      display: flex;
+      flex-direction: column;
+      gap: 3px;
+      flex-shrink: 0;
+    }
+    .tech-item {
+      font-size: 10px;
+      color: #8b949e;
+      display: flex;
+      align-items: center;
+      gap: 6px;
+    }
+    .tech-dot { width: 5px; height: 5px; flex-shrink: 0; }
+  </style>
+</head>
+<body>
+<div class="slide-container">
+  <div class="bg-grid"></div>
+  <div class="header">
+    <div class="section-tag">Technical Architecture</div>
+    <div class="page-title">AI 内容全链路四层技术架构</div>
+  </div>
+  <div class="arch-area">
+
+    <!-- Layer 1: 数据层 -->
+    <div class="layer-row l1">
+      <div class="layer-label">
+        <div class="layer-num">Layer 01</div>
+        <div class="layer-name">数据层</div>
+      </div>
+      <div class="layer-items">
+        <div class="item-card">
+          <div class="item-title">热点数据源</div>
+          <div class="item-desc">微博热搜、百度热搜、知乎热榜、B站热门，公开接口合规采集</div>
+          <div class="item-tag">合规爬取</div>
+        </div>
+        <div class="item-card">
+          <div class="item-title">用户历史数据</div>
+          <div class="item-desc">发布记录、互动数据（点赞/评论/收藏）、内容表现时序数据</div>
+          <div class="item-tag">MySQL / TiDB</div>
+        </div>
+        <div class="item-card">
+          <div class="item-title">平台内容数据</div>
+          <div class="item-desc">多平台账号绑定、内容日历、发布状态追踪、效果回流</div>
+          <div class="item-tag">S3 存储</div>
+        </div>
+        <div class="item-card">
+          <div class="item-title">向量知识库</div>
+          <div class="item-desc">高分案例 RAG 增强，病毒性内容特征向量化存储（Phase 2）</div>
+          <div class="item-tag">Phase 2</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="arrow-row">
+      <div class="arrow-line">
+        <span class="arrow-item">↓ 数据输入</span>
+        <span class="arrow-item">↓ 上下文注入</span>
+        <span class="arrow-item">↓ 历史参考</span>
+        <span class="arrow-item">↓ RAG 检索</span>
+      </div>
+    </div>
+
+    <!-- Layer 2: AI引擎层 -->
+    <div class="layer-row l2">
+      <div class="layer-label">
+        <div class="layer-num">Layer 02</div>
+        <div class="layer-name">AI 引擎层</div>
+      </div>
+      <div class="layer-items">
+        <div class="item-card">
+          <div class="item-title">LLM 文案引擎</div>
+          <div class="item-desc">Manus 内置 LLM（GPT-4o 级），多平台文案风格适配，结构化输出</div>
+          <div class="item-tag">invokeLLM</div>
+        </div>
+        <div class="item-card">
+          <div class="item-title">AI 视频引擎</div>
+          <div class="item-desc">火山引擎 doubao-seedance-1-0-pro / 1-5-pro，文生视频 + 图生视频（i2v）</div>
+          <div class="item-tag" style="background:rgba(124,58,237,0.2);color:#c4b5fd;border-color:rgba(124,58,237,0.4)">已更新 · 国内版</div>
+        </div>
+        <div class="item-card">
+          <div class="item-title">AI 配图引擎</div>
+          <div class="item-desc">Manus 内置图像生成，多风格配图，与文案内容语义对齐</div>
+          <div class="item-tag">generateImage</div>
+        </div>
+        <div class="item-card">
+          <div class="item-title">Agent 编排引擎</div>
+          <div class="item-desc">多步骤 LLM 链式调用，热点→文案→配图→视频全自动流水线</div>
+          <div class="item-tag">tRPC Procedures</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="arrow-row">
+      <div class="arrow-line">
+        <span class="arrow-item">↓ 生成结果</span>
+        <span class="arrow-item">↓ 内容对象</span>
+        <span class="arrow-item">↓ 媒体资产</span>
+        <span class="arrow-item">↓ 任务状态</span>
+      </div>
+    </div>
+
+    <!-- Layer 3: 业务逻辑层 -->
+    <div class="layer-row l3">
+      <div class="layer-label">
+        <div class="layer-num">Layer 03</div>
+        <div class="layer-name">业务逻辑层</div>
+      </div>
+      <div class="layer-items">
+        <div class="item-card">
+          <div class="item-title">内容策略引擎</div>
+          <div class="item-desc">热点匹配、平台格式适配（9:16/16:9/1:1）、最优发布时间推荐</div>
+          <div class="item-tag">server/routers.ts</div>
+        </div>
+        <div class="item-card">
+          <div class="item-title">发布调度系统</div>
+          <div class="item-desc">内容日历管理、一键分发、剪贴板快捷、发布状态追踪</div>
+          <div class="item-tag">distributionRouter</div>
+        </div>
+        <div class="item-card">
+          <div class="item-title">数据分析引擎</div>
+          <div class="item-desc">互动率计算、内容表现对比、平台效果排行、趋势预测</div>
+          <div class="item-tag">analyticsRouter</div>
+        </div>
+        <div class="item-card">
+          <div class="item-title">用户权限系统</div>
+          <div class="item-desc">Manus OAuth 认证、角色权限（admin/user）、API 配额管理</div>
+          <div class="item-tag">protectedProcedure</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="arrow-row">
+      <div class="arrow-line">
+        <span class="arrow-item">↓ UI 数据</span>
+        <span class="arrow-item">↓ 操作响应</span>
+        <span class="arrow-item">↓ 状态更新</span>
+        <span class="arrow-item">↓ 权限校验</span>
+      </div>
+    </div>
+
+    <!-- Layer 4: 用户界面层 -->
+    <div class="layer-row l4">
+      <div class="layer-label">
+        <div class="layer-num">Layer 04</div>
+        <div class="layer-name">用户界面层</div>
+      </div>
+      <div class="layer-items">
+        <div class="item-card">
+          <div class="item-title">首页数据看板</div>
+          <div class="item-desc">渐变面积图、Sparkline 趋势卡片、实时数据概览</div>
+          <div class="item-tag">Home.tsx</div>
+        </div>
+        <div class="item-card">
+          <div class="item-title">内容生成工作台</div>
+          <div class="item-desc">AI 文案 + 配图 + Agent 全自动生成，多平台预览</div>
+          <div class="item-tag">Generate.tsx</div>
+        </div>
+        <div class="item-card">
+          <div class="item-title">AI 视频工作台</div>
+          <div class="item-desc">文生/图生视频、倒计时进度、批量多比例生成</div>
+          <div class="item-tag">VideoGenerator.tsx</div>
+        </div>
+        <div class="item-card">
+          <div class="item-title">发布 / 分析中心</div>
+          <div class="item-desc">内容日历、一键分发、效果追踪、互动数据录入</div>
+          <div class="item-tag">Publish / Analytics</div>
+        </div>
+      </div>
+    </div>
+
+  </div>
+  <div class="footer-bar">
+    <div class="insight-text">
+      <strong>技术栈：</strong>React 19 + TypeScript + tRPC 11 + Drizzle ORM + MySQL/TiDB + S3 存储 + Manus OAuth。
+      AI 能力全部通过内置 API 调用，无需用户配置密钥；视频引擎已切换至<strong>火山引擎国内版</strong>（ark.cn-beijing.volces.com），模型 ID 格式为 doubao-seedance-*。
+    </div>
+    <div class="tech-stack">
+      <div class="tech-item"><div class="tech-dot" style="background:#00d4ff"></div>前端：React 19 + Vite + TailwindCSS 4</div>
+      <div class="tech-item"><div class="tech-dot" style="background:#a78bfa"></div>后端：Express 4 + tRPC 11 + Superjson</div>
+      <div class="tech-item"><div class="tech-dot" style="background:#06b6d4"></div>数据库：MySQL/TiDB + Drizzle ORM</div>
+      <div class="tech-item"><div class="tech-dot" style="background:#22c55e"></div>AI：Manus LLM + 火山引擎 Seedance + S3</div>
+    </div>
+  </div>
+</div>
+</body>
+</html>

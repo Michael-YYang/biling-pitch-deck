@@ -1,0 +1,186 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+  <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;600;700&family=Inter:wght@300;400;500&display=swap" rel="stylesheet">
+  <script src="https://cdn.jsdelivr.net/npm/chart.js@3.9.1"></script>
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    .slide-container {
+      width: 1280px;
+      min-height: 720px;
+      background: #0d1117;
+      font-family: 'Inter', sans-serif;
+      display: flex;
+      flex-direction: column;
+    }
+    .bg-grid {
+      position: absolute;
+      inset: 0;
+      background-image:
+        linear-gradient(rgba(0,212,255,0.03) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(0,212,255,0.03) 1px, transparent 1px);
+      background-size: 60px 60px;
+      pointer-events: none;
+    }
+    .header {
+      text-align: center;
+      padding-top: 32px;
+    }
+    .section-tag {
+      font-size: 11px;
+      font-weight: 500;
+      letter-spacing: 0.18em;
+      color: #00d4ff;
+      text-transform: uppercase;
+      margin-bottom: 4px; /* reduced from 8px to shave page height */
+    }
+    .page-title {
+      font-family: 'Space Grotesk', sans-serif;
+      font-size: 30px;
+      font-weight: 700;
+      color: #ffffff;
+    }
+    .content-area {
+      display: flex;
+      flex: 1;
+      gap: 20px;
+      padding: 18px 40px 0; /* top padding reduced from 20px to 18px */
+    }
+    .left-col {
+      display: flex;
+      flex-direction: column;
+      gap: 8px; /* slightly reduced */
+      width: 340px;
+      flex-shrink: 0;
+    }
+    .metric-card {
+      background: #161b22;
+      border: 1px solid rgba(255,255,255,0.06);
+      padding: 12px 20px; /* reduced vertical padding to save height */
+      flex: 1;
+    }
+    .metric-num {
+      font-family: 'Space Grotesk', sans-serif;
+      font-size: 32px;
+      font-weight: 700;
+      color: #7c3aed;
+      line-height: 1;
+      margin-bottom: 4px;
+    }
+    .metric-desc {
+      font-size: 12px;
+      color: #8b949e;
+      line-height: 1.4;
+    }
+    .right-col {
+      flex: 1;
+      background: #161b22;
+      border: 1px solid rgba(255,255,255,0.06);
+      padding: 16px 20px;
+      display: flex;
+      flex-direction: column;
+    }
+    .chart-title {
+      font-size: 12px;
+      color: #8b949e;
+      margin-bottom: 10px;
+    }
+    .chart-wrap {
+      flex: 1;
+      height: 280px;
+    }
+    .footer-bar {
+      margin: 8px 40px 0; /* reduced top margin from 10px to 8px */
+      border-top: 1px solid rgba(0,212,255,0.3);
+      padding-top: 10px;
+      padding-bottom: 12px; /* reduced from 14px */
+    }
+    .insight-text {
+      font-size: 12px;
+      color: rgba(255,255,255,0.7);
+      line-height: 1.6;
+    }
+    .insight-text strong { color: #ffffff; }
+    .source-text {
+      font-size: 10px;
+      color: #8b949e;
+      margin-top: 4px;
+    }
+  </style>
+</head>
+<body>
+<div class="slide-container">
+  <div class="bg-grid"></div>
+  <div class="header">
+    <div class="section-tag">Market Background</div>
+    <div class="page-title">56.6 亿社媒用户催生千亿级 AI 内容创作市场</div>
+  </div>
+  <div class="content-area">
+    <div class="left-col">
+      <div class="metric-card">
+        <div class="metric-num">56.6 亿</div>
+        <div class="metric-desc">全球社交媒体活跃用户（占全球人口 93.8%）</div>
+      </div>
+      <div class="metric-card">
+        <div class="metric-num">11.49 亿</div>
+        <div class="metric-desc">中国五大内容平台去重月活用户（QuestMobile 2025.10）</div>
+      </div>
+      <div class="metric-card">
+        <div class="metric-num">$42.6 亿</div>
+        <div class="metric-desc">2026 年 AI 内容创作市场规模（同比增长 21.4%）</div>
+      </div>
+      <div class="metric-card">
+        <div class="metric-num">$1,430 亿</div>
+        <div class="metric-desc">2035 年生成式 AI 内容创作市场预测（Precedence Research）</div>
+      </div>
+    </div>
+    <div class="right-col">
+      <div class="chart-title">全球 AI 内容创作市场规模增长趋势（单位：亿美元）</div>
+      <div class="chart-wrap">
+        <canvas id="marketChart"></canvas>
+      </div>
+    </div>
+  </div>
+  <div class="footer-bar">
+    <div class="insight-text"><strong>核心洞察：</strong>短视频已成为用户注意力第一入口——抖音 DAU 突破 8 亿，TikTok 全球 MAU 达 19 亿，YouTube MAU 达 27 亿。内容创作者面临"多平台 × 多格式 × 高频次"的效率瓶颈。</div>
+    <div class="source-text">数据来源：Statista, TBRC, Precedence Research, QuestMobile, WordStream 2025–2026</div>
+  </div>
+</div>
+<script>
+const ctx = document.getElementById('marketChart').getContext('2d');
+new Chart(ctx, {
+  type: 'bar',
+  data: {
+    labels: ['2024', '2025', '2026', '2028', '2031', '2035'],
+    datasets: [
+      {
+        label: 'AI内容创作市场',
+        data: [29, 35, 42.6, 68, 120, 210],
+        backgroundColor: 'rgba(0,212,255,0.7)',
+        borderRadius: 2,
+      },
+      {
+        label: '生成式AI内容创作',
+        data: [45, 90, 160, 280, 680, 1430],
+        backgroundColor: 'rgba(124,58,237,0.75)',
+        borderRadius: 2,
+      }
+    ]
+  },
+  options: {
+    responsive: true,
+    maintainAspectRatio: false,
+    plugins: {
+      legend: {
+        labels: { color: '#8b949e', font: { size: 11 }, boxWidth: 12 }
+      }
+    },
+    scales: {
+      x: { ticks: { color: '#8b949e', font: { size: 11 } }, grid: { color: 'rgba(255,255,255,0.05)' } },
+      y: { ticks: { color: '#8b949e', font: { size: 11 } }, grid: { color: 'rgba(255,255,255,0.05)' } }
+    }
+  }
+});
+</script>
+</body>
+</html>

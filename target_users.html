@@ -1,0 +1,174 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+  <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;600;700&family=Inter:wght@300;400;500&display=swap" rel="stylesheet">
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    .slide-container {
+      width: 1280px;
+      min-height: 720px;
+      background: #0d1117;
+      font-family: 'Inter', sans-serif;
+      display: flex;
+      flex-direction: column;
+    }
+    .bg-grid {
+      position: absolute;
+      inset: 0;
+      background-image:
+        linear-gradient(rgba(0,212,255,0.03) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(0,212,255,0.03) 1px, transparent 1px);
+      background-size: 60px 60px;
+      pointer-events: none;
+    }
+    .header { text-align: center; padding-top: 32px; }
+    .section-tag { font-size: 11px; font-weight: 500; letter-spacing: 0.18em; color: #00d4ff; text-transform: uppercase; margin-bottom: 8px; }
+    .page-title { font-family: 'Space Grotesk', sans-serif; font-size: 30px; font-weight: 700; color: #ffffff; }
+    .content-area {
+      display: flex;
+      gap: 20px;
+      padding: 20px 40px 0;
+      flex: 1;
+    }
+    .user-col {
+      flex: 1;
+      background: #161b22;
+      border: 1px solid rgba(255,255,255,0.06);
+      padding: 24px 22px;
+      display: flex;
+      flex-direction: column;
+      gap: 14px;
+    }
+    .col-header {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+    .col-icon {
+      width: 36px;
+      height: 36px;
+      background: rgba(0,212,255,0.1);
+      border: 1px solid rgba(0,212,255,0.25);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 16px;
+      flex-shrink: 0;
+    }
+    .col-title-wrap {}
+    .col-type { font-size: 11px; letter-spacing: 0.12em; color: #00d4ff; text-transform: uppercase; margin-bottom: 2px; }
+    .col-name { font-family: 'Space Grotesk', sans-serif; font-size: 18px; font-weight: 600; color: #ffffff; }
+    .col-scale { font-size: 12px; color: #8b949e; }
+    .section-label { font-size: 10px; letter-spacing: 0.12em; color: #7c3aed; text-transform: uppercase; margin-bottom: 6px; }
+    .pain-list { list-style: none; display: flex; flex-direction: column; gap: 6px; }
+    .pain-list li { font-size: 13px; color: rgba(255,255,255,0.8); line-height: 1.5; display: flex; gap: 8px; }
+    .pain-list li::before { content: "—"; color: #00d4ff; flex-shrink: 0; }
+    .pay-badge {
+      margin-top: auto;
+      background: rgba(124,58,237,0.12);
+      border: 1px solid rgba(124,58,237,0.3);
+      padding: 10px 14px;
+    }
+    .pay-label { font-size: 10px; letter-spacing: 0.1em; color: #a78bfa; text-transform: uppercase; margin-bottom: 4px; }
+    .pay-value { font-family: 'Space Grotesk', sans-serif; font-size: 22px; font-weight: 700; color: #7c3aed; }
+    .pay-desc { font-size: 11px; color: #8b949e; margin-top: 2px; }
+    .footer-bar {
+      margin: 14px 40px 0;
+      border-top: 1px solid rgba(0,212,255,0.3);
+      padding-top: 10px;
+      padding-bottom: 14px;
+    }
+    .insight-text { font-size: 12px; color: rgba(255,255,255,0.7); line-height: 1.6; }
+    .insight-text strong { color: #ffffff; }
+  </style>
+</head>
+<body>
+<div class="slide-container">
+  <div class="bg-grid"></div>
+  <div class="header">
+    <div class="section-tag">Target Users</div>
+    <div class="page-title">三层市场：个人创作者到 MCN 机构的差异化需求</div>
+  </div>
+  <div class="content-area">
+    <!-- 个人创作者 -->
+    <div class="user-col">
+      <div class="col-header">
+        <div class="col-icon">👤</div>
+        <div class="col-title-wrap">
+          <div class="col-type">Primary Market</div>
+          <div class="col-name">个人创作者</div>
+        </div>
+      </div>
+      <div class="col-scale">规模：中国约 1.5 亿内容创作者，其中 KOC 约 8000 万</div>
+      <div>
+        <div class="section-label">核心痛点</div>
+        <ul class="pain-list">
+          <li>每天需为 3–5 个平台分别生产差异化内容</li>
+          <li>热点追踪耗时，错过最佳发布窗口</li>
+          <li>视频剪辑门槛高，AI 生成视频无法替代真人出镜</li>
+          <li>缺乏数据反馈，不知道哪类内容更受欢迎</li>
+        </ul>
+      </div>
+      <div class="pay-badge">
+        <div class="pay-label">付费意愿</div>
+        <div class="pay-value">¥99–299 / 月</div>
+        <div class="pay-desc">效率工具付费意愿强，对 ROI 敏感</div>
+      </div>
+    </div>
+    <!-- 中小企业/品牌方 -->
+    <div class="user-col">
+      <div class="col-header">
+        <div class="col-icon">🏢</div>
+        <div class="col-title-wrap">
+          <div class="col-type">Core Market</div>
+          <div class="col-name">中小企业 / 品牌方</div>
+        </div>
+      </div>
+      <div class="col-scale">规模：中国中小企业超 5000 万家，有内容营销预算约 300 万家</div>
+      <div>
+        <div class="section-label">核心痛点</div>
+        <ul class="pain-list">
+          <li>内容团队人力成本高，1–3 人难以覆盖多平台</li>
+          <li>品牌调性一致性难以保持</li>
+          <li>投放 ROI 不透明，内容效果难以量化</li>
+          <li>竞品动态监控滞后，错失流量机会</li>
+        </ul>
+      </div>
+      <div class="pay-badge">
+        <div class="pay-label">付费意愿</div>
+        <div class="pay-value">¥999–4999 / 月</div>
+        <div class="pay-desc">预算充足，关注团队协作与数据分析</div>
+      </div>
+    </div>
+    <!-- MCN 机构 -->
+    <div class="user-col">
+      <div class="col-header">
+        <div class="col-icon">🎬</div>
+        <div class="col-title-wrap">
+          <div class="col-type">Enterprise Market</div>
+          <div class="col-name">MCN 机构</div>
+        </div>
+      </div>
+      <div class="col-scale">规模：中国 MCN 机构超 4 万家，管理达人账号超 500 万个</div>
+      <div>
+        <div class="section-label">核心痛点</div>
+        <ul class="pain-list">
+          <li>批量管理数十至数百个账号，人工成本极高</li>
+          <li>内容矩阵差异化难，容易触发平台限流</li>
+          <li>数据孤岛：各平台数据无法统一分析</li>
+          <li>新人达人培育周期长，爆款复制效率低</li>
+        </ul>
+      </div>
+      <div class="pay-badge">
+        <div class="pay-label">付费意愿</div>
+        <div class="pay-value">¥9,999+ / 月</div>
+        <div class="pay-desc">需要 API 接入与定制化，按账号数计费</div>
+      </div>
+    </div>
+  </div>
+  <div class="footer-bar">
+    <div class="insight-text"><strong>关键洞察：</strong>三类用户共同面临"多平台内容生产效率"瓶颈，但付费路径不同——个人用户需低价高频订阅，企业用户需功能深度与数据价值，MCN 需批量自动化与 API 开放能力。</div>
+  </div>
+</div>
+</body>
+</html>

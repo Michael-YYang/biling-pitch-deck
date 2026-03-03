@@ -1,0 +1,190 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+  <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;600;700&family=Inter:wght@300;400;500&display=swap" rel="stylesheet">
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    .slide-container {
+      width: 1280px;
+      min-height: 720px;
+      background: #0d1117;
+      font-family: 'Inter', sans-serif;
+      display: flex;
+      flex-direction: column;
+    }
+    .bg-grid {
+      position: absolute;
+      inset: 0;
+      background-image:
+        linear-gradient(rgba(0,212,255,0.03) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(0,212,255,0.03) 1px, transparent 1px);
+      background-size: 60px 60px;
+      pointer-events: none;
+    }
+    .header { text-align: center; padding-top: 28px; }
+    .section-tag { font-size: 11px; font-weight: 500; letter-spacing: 0.18em; color: #00d4ff; text-transform: uppercase; margin-bottom: 8px; }
+    .page-title { font-family: 'Space Grotesk', sans-serif; font-size: 28px; font-weight: 700; color: #ffffff; }
+    .content-area {
+      display: flex;
+      gap: 16px;
+      padding: 18px 40px 0;
+      flex: 1;
+    }
+    .track-col {
+      flex: 1;
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+    }
+    .track-header {
+      background: rgba(0,212,255,0.08);
+      border: 1px solid rgba(0,212,255,0.2);
+      padding: 10px 14px;
+    }
+    .track-label { font-size: 10px; letter-spacing: 0.14em; color: #00d4ff; text-transform: uppercase; margin-bottom: 3px; }
+    .track-name { font-family: 'Space Grotesk', sans-serif; font-size: 15px; font-weight: 600; color: #ffffff; }
+    .player-card {
+      background: #161b22;
+      border: 1px solid rgba(255,255,255,0.06);
+      padding: 10px 14px;
+      flex: 1;
+    }
+    .player-name { font-family: 'Space Grotesk', sans-serif; font-size: 14px; font-weight: 600; color: #ffffff; margin-bottom: 4px; }
+    .player-tag {
+      display: inline-block;
+      font-size: 10px;
+      letter-spacing: 0.08em;
+      padding: 2px 7px;
+      margin-bottom: 5px;
+    }
+    .tag-global { background: rgba(0,212,255,0.1); color: #00d4ff; border: 1px solid rgba(0,212,255,0.2); }
+    .tag-cn { background: rgba(124,58,237,0.12); color: #a78bfa; border: 1px solid rgba(124,58,237,0.25); }
+    .tag-video { background: rgba(6,182,212,0.1); color: #06b6d4; border: 1px solid rgba(6,182,212,0.2); }
+    .player-desc { font-size: 11px; color: #8b949e; line-height: 1.45; }
+    .opportunity-bar {
+      margin: 14px 40px 0;
+      background: rgba(124,58,237,0.12);
+      border: 1px solid rgba(124,58,237,0.35);
+      padding: 12px 20px;
+      display: flex;
+      align-items: center;
+      gap: 16px;
+    }
+    .opp-label { font-size: 10px; letter-spacing: 0.14em; color: #a78bfa; text-transform: uppercase; white-space: nowrap; }
+    .opp-divider { width: 1px; height: 28px; background: rgba(124,58,237,0.4); }
+    .opp-text { font-size: 12px; color: rgba(255,255,255,0.8); line-height: 1.5; }
+    .opp-text strong { color: #ffffff; }
+    .footer-source {
+      margin: 8px 40px 0;
+      padding-bottom: 12px;
+      font-size: 10px;
+      color: #8b949e;
+    }
+  </style>
+</head>
+<body>
+<div class="slide-container">
+  <div class="bg-grid"></div>
+  <div class="header">
+    <div class="section-tag">Competitive Landscape</div>
+    <div class="page-title">四大赛道 14 个玩家的市场格局，笔灵的差异化机会区间</div>
+  </div>
+  <div class="content-area">
+    <!-- Track 1 -->
+    <div class="track-col">
+      <div class="track-header">
+        <div class="track-label">Track 01</div>
+        <div class="track-name">AI 文案 / 内容创作</div>
+      </div>
+      <div class="player-card">
+        <div class="player-name">Jasper AI</div>
+        <span class="player-tag tag-global">Global</span>
+        <div class="player-desc">AI 长文案生成，企业级定价，缺乏社媒分发与视频能力</div>
+      </div>
+      <div class="player-card">
+        <div class="player-name">Copy.ai</div>
+        <span class="player-tag tag-global">Global</span>
+        <div class="player-desc">营销文案自动化，工作流强，无热点数据与视频模块</div>
+      </div>
+      <div class="player-card">
+        <div class="player-name">秘塔写作猫</div>
+        <span class="player-tag tag-cn">中国</span>
+        <div class="player-desc">中文写作辅助，缺乏跨平台分发与 AI 视频能力</div>
+      </div>
+    </div>
+    <!-- Track 2 -->
+    <div class="track-col">
+      <div class="track-header">
+        <div class="track-label">Track 02</div>
+        <div class="track-name">社媒管理 / 调度</div>
+      </div>
+      <div class="player-card">
+        <div class="player-name">Hootsuite</div>
+        <span class="player-tag tag-global">Global</span>
+        <div class="player-desc">多平台调度老牌工具，AI 内容生成能力弱，不支持中国平台</div>
+      </div>
+      <div class="player-card">
+        <div class="player-name">Buffer</div>
+        <span class="player-tag tag-global">Global</span>
+        <div class="player-desc">轻量级调度工具，无 AI 视频、无热点分析、无中国平台</div>
+      </div>
+      <div class="player-card">
+        <div class="player-name">科普拉</div>
+        <span class="player-tag tag-cn">中国</span>
+        <div class="player-desc">国内社媒管理，内容生成能力有限，视频功能缺失</div>
+      </div>
+    </div>
+    <!-- Track 3 -->
+    <div class="track-col">
+      <div class="track-header">
+        <div class="track-label">Track 03</div>
+        <div class="track-name">AI 视频生成 / 剪辑</div>
+      </div>
+      <div class="player-card">
+        <div class="player-name">Opus Clip</div>
+        <span class="player-tag tag-video">Video</span>
+        <div class="player-desc">长视频切片工具，无文案生成、无热点数据、无分发功能</div>
+      </div>
+      <div class="player-card">
+        <div class="player-name">HeyGen</div>
+        <span class="player-tag tag-video">Video</span>
+        <div class="player-desc">数字人视频，高质量但价格昂贵，无内容策略与分发</div>
+      </div>
+      <div class="player-card">
+        <div class="player-name">剪映 AI</div>
+        <span class="player-tag tag-cn">中国</span>
+        <div class="player-desc">字节系视频剪辑，无文案策略与热点洞察，数据封闭</div>
+      </div>
+    </div>
+    <!-- Track 4 -->
+    <div class="track-col">
+      <div class="track-header">
+        <div class="track-label">Track 04</div>
+        <div class="track-name">中国本土全链路工具</div>
+      </div>
+      <div class="player-card">
+        <div class="player-name">新榜 / 飞瓜数据</div>
+        <span class="player-tag tag-cn">中国</span>
+        <div class="player-desc">数据分析强，内容生成与 AI 视频能力弱，无分发功能</div>
+      </div>
+      <div class="player-card">
+        <div class="player-name">蚁小二</div>
+        <span class="player-tag tag-cn">中国</span>
+        <div class="player-desc">多账号管理，AI 生成能力有限，视频功能缺失</div>
+      </div>
+      <div class="player-card">
+        <div class="player-name">万兴喵影</div>
+        <span class="player-tag tag-cn">中国</span>
+        <div class="player-desc">视频剪辑工具，缺乏热点数据与内容策略整合</div>
+      </div>
+    </div>
+  </div>
+  <div class="opportunity-bar">
+    <div class="opp-label">笔灵机会区间</div>
+    <div class="opp-divider"></div>
+    <div class="opp-text"><strong>空白地带：</strong>现有工具均在单一维度发力——文案、调度、视频或数据各自为战。<strong>笔灵是唯一将热点洞察 + AI文案 + AI视频生成 + 多平台分发整合为全链路闭环的中文工具</strong>，直接覆盖中国五大主流社媒平台。</div>
+  </div>
+  <div class="footer-source">数据来源：公开产品信息、App Store 评分、G2 Crowd、各平台官网 2025–2026</div>
+</div>
+</body>
+</html>
